@@ -1,0 +1,105 @@
+11.05 10:05 PM
+# Build prompt: LaptopCheck
+
+Build **LaptopCheck**, a simple, fast, mobile-first web app that helps people inspect a second-hand or refurbished Windows laptop at the seller's shop before paying. Build the real working app, not a mockup. 
+
+## Core idea (most important)
+
+Three things are kept **separate**:
+
+1. **Directory (home page)**: a quick-access hub of guides, commands, and resources or test links. It is for looking things up.
+2. **Checklist**: a short pass/fail list used while inspecting. It is for recording results.
+3. **Guides**: one short page per component with only the essentials.
+
+The home page must NOT be a dashboard of stats. It is a searchable directory. The user should reach any command, tool link or guide in at most 2 taps.
+
+## Tech
+
+- Astro + React islands (React only where interactive: checklist, search, copy buttons, theme toggle, report).
+- Tailwind CSS, Lucide icons, Inter font (self-hosted or system fallback so it works offline).
+- LocalStorage only. No backend, auth, database, paid APIs or analytics.
+- Everything except the external test sites must work offline (add a basic service worker or PWA manifest so it is installable and works offline).
+- Modular structure: `src/data/*.ts` holds ALL content (guides, commands, tools, checklist items) so content can be edited without touching components. `src/components`, `src/layouts`, `src/pages`.
+
+## Design
+
+Minimal, neutral, technical. Off-white/white and charcoal/slate text, muted green accent, thin grey borders, almost no shadows, small radii, no gradients, no glassmorphism, no decorative elements, no heavy animation. Light and dark themes (saved, defaults to system). Large tap targets (min 44px). Body text at least 16px for readability in a shop. Visible focus states, semantic HTML, keyboard accessible.
+
+## Pages (simplified routes)
+
+| Route | Purpose |
+|---|---|
+| `/` | **Resource directory** (home) |
+| `/guides/[slug]` | Essential guide per component (see list below) |
+| `/tools` | All external test tools and all copyable commands, searchable |
+| `/checklist` | The inspection checklist (separate from guides/tools) |
+| `/report` | Printable summary, JSON export |
+| `/about` | About, privacy, disclaimer (one page with anchored sections; footer links to each) |
+
+Guide slugs: `processor`, `ram`, `storage`, `battery`, `display`, `keyboard-touchpad`, `connectivity`, `bios-security`, `physical-condition`, `buying-guide`.
+
+### Home `/` (directory)
+
+- Top bar: logo, links (Guides, Tools, Checklist), theme toggle. A prominent **"Open Checklist"** button.
+- A single large **search box** that searches across guides, commands and tools (client-side, instant).
+- Section **"Quick tests"**: grid of the 9 component cards (Processor, RAM, Storage, Battery, Display, Keyboard & Touchpad, Connectivity, BIOS & Security, Physical). Each card: icon, 1-line description, and links to its guide. Show checklist progress as a small "3/11 done" label from LocalStorage (no big stats).
+- Section **"Copy a command"**: the essential commands as one-tap copy rows (processor, disk, battery, BIOS/security commands, activation, memory diagnostic).
+- Section **"Online test tools"**: compact list of the 7 external tools with an external-link icon, opening in a new tab with `rel="noopener noreferrer"`.
+- A red/amber **"Walk away if…"** strip (not a wall of warnings): BIOS/organisation lock, signs of liquid damage or motherboard repair, swollen battery, failing SSD health, overheating.
+- Footer: About, Privacy, Disclaimer, GitHub placeholder link (`#`, clearly labelled placeholder).
+
+### Guide pages `/guides/[slug]`
+
+Keep each guide **short and scannable**: "What to check" (bullets), "How" (steps), "Commands" (copyable code blocks, horizontally scrollable on mobile), "Test tool" button if relevant, "Red flags". Include an **"Open checklist section"** button that jumps to that category in `/checklist`. On desktop, a right-hand panel can show the red flags; on mobile it collapses into the page. No JS beyond copy buttons on these pages.
+
+Content requirements:
+
+- **Processor**: verify exact model and generation, cores/threads, idle usage, temperature, throttling, 10–15 min stress test, unexpected restarts. Command: `wmic cpu get name,numberofcores,numberoflogicalprocessors,maxclockspeed`. Because `wmic` is deprecated on newer Windows 11, also show the PowerShell equivalent `Get-CimInstance Win32_Processor | Select Name,NumberOfCores,NumberOfLogicalProcessors,MaxClockSpeed`. Note that 2.0 GHz is only a reference from the original notes, not a requirement. Generation, architecture, cores and sustained performance matter more than clock speed.
+- **RAM**: capacity, DDR generation, frequency, slots used/free, soldered or upgradeable. Steps: Ctrl+Shift+Esc → Performance → Memory. Command `mdsched.exe` (note it restarts the PC and takes time). Mention CPU-Z as optional.
+- **Storage**: SSD vs HDD (Task Manager → Performance → Disk 0), capacity, model, health %, power-on hours, total writes, bad sectors, HDD clicking, speed. Commands: `wmic diskdrive get model,size,status`, `chkdsk C: /scan`. Tool: CrystalDiskInfo. Explain that a basic disk status command cannot prove a drive is healthy, and that SMART/health % must be read carefully.
+- **Battery**: `powercfg /batteryreport`. Explain comparing **design capacity vs full charge capacity**. Charging speed, sudden drops, runs without charger, charger and port stability. Swelling is a **safety issue**: do not buy, do not charge.
+- **Display**: resolution, brightness, dead pixels, spots, flicker, discolouration, lines, backlight bleed, hinge movement. Tool: dead pixel test.
+- **Keyboard & touchpad**: every key, F1–F12, Caps/Num Lock, arrows, Enter/Shift/Ctrl/Alt/Win, backlight, click, two-finger scroll, gestures. Tool: key-test.ru.
+- **Connectivity**: Wi-Fi, Bluetooth, hotspot, Ethernet, all USB ports, HDMI, headphone jack, speakers, webcam, mic. Tools: USB, webcam, mic, speaker links.
+- **BIOS & security** (mark as most important): BIOS key table (Dell F2, HP Esc then F10, ThinkPad F1, IdeaPad F2, Acer F2, ASUS F2, MSI Delete). Steps: shut down → power on → tap key repeatedly. Check: opens without password, can navigate, can open Security, can change boot order, Secure Boot configurable. Commands: `msinfo32` (Run), `dsregcmd /status`, `slmgr /xpr`. For each, explain what it reveals and its limits. Warning: a Windows reinstall does NOT remove BIOS passwords, corporate ownership restrictions or Autopilot enrolment. **Never advise bypassing organisational security.** If a lock is found, tell the buyer to ask the seller for legitimate ownership release documentation, or walk away.
+- **Physical**: chassis, hinges, screen frame, missing screws, cracks, charging port, liquid damage, rubber feet, signs of motherboard repair, charger originality, serial and model match.
+- **Buying guide**: example ₹19,900 targets presented as *original targets, not universal requirements*: Core i5 8th gen or better, 8 GB DDR4 upgradeable to 16 GB, 256 GB SSD with good health, working Wi-Fi/Bluetooth, healthy board/display/cooling, no BIOS or corporate lock. Advice: never pay before finishing the inspection and **restarting the laptop at least twice**; test on battery and on charger; a verbal assurance is not a warranty; verify ownership.
+
+### Tools page `/tools`
+
+Searchable cards: name, purpose, one-line usage, **Open website** button with external-link icon. Tools: Dead Pixel Test (https://displaytech.org/en/tests/dead.pixel.htm), CrystalDiskInfo (https://crystalmark.info/en/software/crystaldiskinfo/), Keyboard & Trackpad Test (https://en.key-test.ru/), Webcam Test (https://webcamtests.com/), Mic Test (https://mictests.com/), Speaker Test (https://laptopanalyzer.com/test/audio/), USB Port Checker (https://pctester.online/usb-port-checker/). Below them, the full list of commands with copy buttons. Clear note: **external sites do not inspect the laptop automatically; the buyer must run the tests and judge the results.** Also note these need internet.
+
+### Checklist `/checklist` (separate and lean)
+
+- Pure checklist, **no long explanations**: each item is one short line, plus a small "?" link to the relevant guide section.
+- Grouped by the 9 categories (collapsible, with per-category progress). Items derive from the inspection lists above (e.g. "Exact CPU model verified", "Battery design vs full capacity compared", "BIOS opens without password"). Write ~8–12 concise items per category.
+- Each item has 4 states via large, clear segmented buttons: **Not tested / Passed / Failed / Needs attention**, plus an optional note field (collapsed until tapped).
+- Each item has a severity tag in the data (Critical / High / Medium / Low) used only by the report. Critical = BIOS/organisation lock, motherboard damage, liquid damage. High = serious SSD health, overheating, charging circuit failure. Medium = battery degradation, RAM errors, display or keyboard defects. Low = minor scratches, missing rubber feet, cosmetic wear.
+- Sticky top bar with live **progress** (computed from data, never hardcoded), passed/failed/attention/remaining counts, search box, status filter chips, expand/collapse all.
+- **Laptop details** (collapsible panel at top): model, brand, serial, processor, RAM, storage, quoted price (placeholder hint ₹15,000–₹20,000), inspection date (defaults to today).
+- **Reset** requires an explicit confirmation dialog.
+- One active inspection at a time, saved automatically.
+
+### Report `/report`
+
+Shows laptop details, quoted price, totals (tests, passed, failed, attention, untested), category progress, a list of failed and attention items with notes grouped by severity, and an **overall assessment** that is advisory only: e.g. "Critical issue found: do not buy without resolution", "High-risk issues found", "Incomplete inspection", or "No issues recorded in tested items". **Never say the laptop is safe or guaranteed**, even if everything passed; always show the line "Passed checks do not guarantee hardware condition." Actions: Print (print stylesheet, clean, no nav), Export JSON (file download), Save report locally (stores a snapshot in LocalStorage), Start new inspection (with confirmation).
+
+## Persistence
+
+Versioned keys, e.g. `laptopcheck:v1:inspection`, `laptopcheck:v1:theme`. Wrap parsing in try/catch, validate the schema, fall back safely on missing or corrupted data, and merge with new checklist items when the app is updated. Persist laptop details, statuses, notes, inspection date, theme.
+
+## Technical quality
+
+Unique title, meta description, canonical URL and Open Graph tags per page; sitemap; robots.txt; favicon; skip link; proper labels on all form controls; `aria` for collapsibles and dialogs; no dead buttons or placeholder interactions (the GitHub link is the only allowed placeholder and must be labelled); command blocks scroll horizontally; tables become stacked cards on mobile; mobile uses a bottom bar with Home / Guides / Tools / Checklist and keeps checklist progress visible.
+
+## Disclaimer text (use verbatim on `/about#disclaimer` and in the footer)
+
+"LaptopCheck provides educational inspection guidance. It does not guarantee hardware condition or replace professional hardware diagnostics. Buyers should verify device ownership and inspect hardware before payment."
+
+Privacy: state plainly that all data stays in the browser, nothing is sent to any server, and external test sites are third parties.
+
+## Acceptance criteria
+
+1. All routes work and the home page is a searchable directory.
+2. Checklist is separate from guides and tools; each guide links to its checklist section.
+3. Statuses an

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#0f172a"/>
+  <!-- Laptop Screen -->
+  <rect x="96" y="112" width="320" height="210" rx="16" stroke="#e2e8f0" stroke-width="24" fill="#1e293b"/>
+  <!-- Screen Display Area -->
+  <rect x="120" y="136" width="272" height="162" rx="8" fill="#090d16"/>
+  <!-- Laptop Base -->
+  <path d="M48 352C48 338.745 58.7452 328 72 328H440C453.255 328 464 338.745 464 352V364C464 372.837 456.837 380 448 380H64C55.1634 380 48 372.837 48 364V352Z" fill="#334155"/>
+  <rect x="216" y="336" width="80" height="8" rx="4" fill="#64748b"/>
+  <!-- Checkmark Badge on Screen -->
+  <circle cx="256" cy="217" r="48" fill="#059669"/>
+  <path d="M236 217L250 231L278 203" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
