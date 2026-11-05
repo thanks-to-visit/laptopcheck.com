@@ -8,9 +8,9 @@ export const Header: React.FC = () => {
   const { route, navigate } = useRouter();
   const { theme, toggleTheme, stats } = useInspection();
 
-  const isHome = route.path === '/';
+  const isTools = route.path === '/tools' || route.path === '/';
+  const isDirectory = route.path === '/directory';
   const isGuides = route.path === '/guides';
-  const isTools = route.path === '/tools';
   const isChecklist = route.path === '/checklist';
   const isReport = route.path === '/report';
   const isAbout = route.path === '/about';
@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
           <Link
             href="/"
             className="flex items-center gap-2 font-bold text-base md:text-lg tracking-tight text-slate-900 dark:text-slate-100 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors whitespace-nowrap shrink-0"
-            title="LaptopCheck Home"
+            title="LaptopCheck Tools & Inspection"
           >
             <span className="p-1.5 rounded bg-slate-900 dark:bg-slate-800 text-white flex items-center justify-center">
               <Laptop className="w-4 h-4 text-emerald-400" />
@@ -41,9 +41,17 @@ export const Header: React.FC = () => {
           {/* Zone 2: Navigation Links (single-line, clean text) */}
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
             <Link
-              href="/"
+              href="/tools"
               className={`hover:text-slate-900 dark:hover:text-slate-100 transition-colors whitespace-nowrap shrink-0 py-1 ${
-                isHome ? 'text-slate-900 dark:text-slate-100 font-semibold border-b-2 border-emerald-500' : ''
+                isTools ? 'text-slate-900 dark:text-slate-100 font-semibold border-b-2 border-emerald-500' : ''
+              }`}
+            >
+              Tools &amp; Commands
+            </Link>
+            <Link
+              href="/directory"
+              className={`hover:text-slate-900 dark:hover:text-slate-100 transition-colors whitespace-nowrap shrink-0 py-1 ${
+                isDirectory ? 'text-slate-900 dark:text-slate-100 font-semibold border-b-2 border-emerald-500' : ''
               }`}
             >
               Directory
@@ -55,14 +63,6 @@ export const Header: React.FC = () => {
               }`}
             >
               Guides
-            </Link>
-            <Link
-              href="/tools"
-              className={`hover:text-slate-900 dark:hover:text-slate-100 transition-colors whitespace-nowrap shrink-0 py-1 ${
-                isTools ? 'text-slate-900 dark:text-slate-100 font-semibold border-b-2 border-emerald-500' : ''
-              }`}
-            >
-              Tools &amp; Commands
             </Link>
             <Link
               href="/checklist"

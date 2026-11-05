@@ -18,11 +18,12 @@ const AppContent: React.FC = () => {
   const renderCurrentPage = () => {
     switch (route.path) {
       case '/':
+      case '/tools':
+        return <ToolsPage />;
+      case '/directory':
         return <HomePage />;
       case '/guides':
         return <GuidesPage />;
-      case '/tools':
-        return <ToolsPage />;
       case '/checklist':
         return <ChecklistPage />;
       case '/report':
@@ -30,8 +31,8 @@ const AppContent: React.FC = () => {
       case '/about':
         return <AboutPage />;
       default:
-        // If unknown route, fallback gracefully to HomePage
-        return <HomePage />;
+        // Default landing page is Tools
+        return <ToolsPage />;
     }
   };
 

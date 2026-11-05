@@ -5,11 +5,14 @@ import {
   Terminal,
   Wrench,
   X,
-  Info
+  Info,
+  LayoutGrid,
+  ClipboardCheck
 } from 'lucide-react';
 import { ONLINE_TOOLS } from '../data/tools';
 import { COMMANDS } from '../data/commands';
 import { CopyButton } from '../components/CopyButton';
+import { Link } from '../context/RouterContext';
 
 type ToolFilter = 'all' | 'tools' | 'commands';
 
@@ -47,13 +50,32 @@ export const ToolsPage: React.FC = () => {
     <div className="space-y-8">
       {/* Header & Search */}
       <section className="space-y-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-            Hardware Tools &amp; Commands
-          </h1>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 max-w-2xl">
-            External browser diagnostics and Windows copy-ready terminal commands for laptop field inspection.
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+              Hardware Tools &amp; Commands
+            </h1>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400 max-w-2xl">
+              External browser diagnostics and Windows copy-ready terminal commands for laptop field inspection.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <Link
+              href="/directory"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors min-h-[40px]"
+            >
+              <LayoutGrid className="w-3.5 h-3.5 text-slate-500" />
+              <span>Guides Directory</span>
+            </Link>
+            <Link
+              href="/checklist"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium rounded text-white bg-emerald-600 hover:bg-emerald-700 transition-colors min-h-[40px]"
+            >
+              <ClipboardCheck className="w-3.5 h-3.5" />
+              <span>Inspection Checklist</span>
+            </Link>
+          </div>
         </div>
 
         {/* Search & Filter Toolbar */}

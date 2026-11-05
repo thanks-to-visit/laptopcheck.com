@@ -108,13 +108,20 @@ export const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Back to Directory Link */}
-      <div className="pt-4">
+      {/* Back Links */}
+      <div className="pt-4 flex items-center gap-3 text-xs font-medium">
         <Link
-          href="/"
-          className="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:underline"
+          href="/tools"
+          className="text-emerald-600 dark:text-emerald-400 hover:underline"
         >
-          ← Back to Directory
+          ← Back to Tools &amp; Commands
+        </Link>
+        <span className="text-slate-300 dark:text-slate-700">·</span>
+        <Link
+          href="/directory"
+          className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:underline"
+        >
+          Guides Directory
         </Link>
       </div>
     </div>

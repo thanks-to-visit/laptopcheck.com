@@ -7,9 +7,9 @@ export const MobileNav: React.FC = () => {
   const { route, navigate } = useRouter();
   const { stats } = useInspection();
 
-  const isHome = route.path === '/';
+  const isTools = route.path === '/tools' || route.path === '/';
+  const isDirectory = route.path === '/directory';
   const isGuides = route.path === '/guides';
-  const isTools = route.path === '/tools';
   const isChecklist = route.path === '/checklist';
   const isReport = route.path === '/report';
 
@@ -20,12 +20,26 @@ export const MobileNav: React.FC = () => {
       className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs border-t border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="grid grid-cols-5 items-center h-14 max-w-lg mx-auto px-1">
-        {/* Home */}
+        {/* Tools (Default Landing) */}
         <button
           type="button"
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/tools')}
           className={`flex flex-col items-center justify-center min-h-[48px] py-1 cursor-pointer transition-colors ${
-            isHome
+            isTools
+              ? 'text-emerald-600 dark:text-emerald-400 font-medium'
+              : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
+          }`}
+        >
+          <Wrench className="w-4 h-4" />
+          <span className="text-[10px] tracking-tight mt-1">Tools</span>
+        </button>
+
+        {/* Directory */}
+        <button
+          type="button"
+          onClick={() => navigate('/directory')}
+          className={`flex flex-col items-center justify-center min-h-[48px] py-1 cursor-pointer transition-colors ${
+            isDirectory
               ? 'text-emerald-600 dark:text-emerald-400 font-medium'
               : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
           }`}
@@ -46,20 +60,6 @@ export const MobileNav: React.FC = () => {
         >
           <BookOpen className="w-4 h-4" />
           <span className="text-[10px] tracking-tight mt-1">Guides</span>
-        </button>
-
-        {/* Tools */}
-        <button
-          type="button"
-          onClick={() => navigate('/tools')}
-          className={`flex flex-col items-center justify-center min-h-[48px] py-1 cursor-pointer transition-colors ${
-            isTools
-              ? 'text-emerald-600 dark:text-emerald-400 font-medium'
-              : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200'
-          }`}
-        >
-          <Wrench className="w-4 h-4" />
-          <span className="text-[10px] tracking-tight mt-1">Tools</span>
         </button>
 
         {/* Checklist */}
