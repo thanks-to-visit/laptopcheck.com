@@ -15,6 +15,13 @@ export const Footer: React.FC = () => {
             </Link>
             <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
             <Link
+              href="/about#faq"
+              className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors underline-offset-4 hover:underline"
+            >
+              Buyer FAQs
+            </Link>
+            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
+            <Link
               href="/about#privacy"
               className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors underline-offset-4 hover:underline"
             >

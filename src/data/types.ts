@@ -106,3 +106,14 @@ export interface SavedSnapshot {
   assessmentSeverity: 'critical' | 'high' | 'warning' | 'neutral';
   items: Record<string, ItemStatusRecord>;
 }
+
+export interface FAQItem {
+  id: string;
+  category: string;
+  question: string;
+  shortAnswer: string;
+  detailedAnswer: string;
+  command?: string;
+  linkHref?: string;
+  linkText?: string;
+}

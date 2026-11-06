@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1JDMWGJH31"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1JDMWGJH31');
+    </script>
     <title>LaptopCheck – Used &amp; Refurbished Laptop Field Inspection Guide</title>
     <meta name="description" content="Mobile-first inspection guide, hardware test directory, and diagnostic checklist for buying second-hand and refurbished Windows laptops." />
     <meta property="og:title" content="LaptopCheck – Used &amp; Refurbished Laptop Field Inspection Guide" />
@@ -12,6 +22,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="LaptopCheck – Used &amp; Refurbished Laptop Field Inspection Guide" />
     <meta name="twitter:description" content="Mobile-first inspection guide, hardware test directory, and diagnostic checklist for buying second-hand and refurbished Windows laptops." />
+    <meta name="google-site-verification" content="9Y9R8Dk5AnNF21goYmoJ1-960qIx2sje0Oal70DOMNM" />
 
     <!-- Theme & PWA -->
     <meta name="theme-color" content="#0f172a" />
@@ -37,6 +48,96 @@
         "price": "0",
         "priceCurrency": "USD"
       }
+    }
+    </script>
+
+    <!-- FAQPage Schema for Search Engines & LLM Crawlers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the biggest red flags when buying a second-hand laptop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The top 5 deal-breaking red flags are BIOS administrator password locks, corporate MDM/Autopilot enrollment, physical battery swelling, failing SSD health, and signs of motherboard heat/liquid repairs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check laptop battery health using Command Prompt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open Command Prompt or PowerShell, run 'powercfg /batteryreport', and open the generated battery-report.html file to compare Design Capacity against Full Charge Capacity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check if a used laptop has a corporate MDM or Microsoft Autopilot lock?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open Command Prompt and run 'dsregcmd /status'. Check that 'AzureAdJoined' and 'EnterpriseJoined' both show 'NO'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check for a BIOS password on Dell, HP, ThinkPad, and Acer laptops?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Perform a complete shutdown, power on the machine, and immediately tap the BIOS key repeatedly (Dell: F2, HP: Esc then F10, ThinkPad: F1, Lenovo IdeaPad/Acer/ASUS: F2). Verify setup opens without asking for a password."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check if Windows 10 or 11 is permanently activated or running a cracked license?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Press Win + R, type 'slmgr /xpr', and press Enter. A legitimate consumer license will state: 'The machine is permanently activated'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I verify if a laptop has an SSD or slow HDD, and check its health?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Press Ctrl + Shift + Esc to open Task Manager, click 'Performance', then 'Disk 0'. Check that the Type label says 'SSD', then run CrystalDiskInfo from a USB drive to verify SMART health percentage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What specifications should I target for a refurbished laptop under ₹20,000 (~$240)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Target an Intel Core i5 8th Gen (or AMD Ryzen 2000/3000 series+), 8 GB DDR4 RAM (upgradeable to 16 GB), 256 GB SSD with >85% health, and a 1080p Full HD IPS display."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I test for dead pixels, screen pressure spots, and backlight bleed in a shop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use an online Dead Pixel Test in full screen (F11) to cycle through solid Red, Green, Blue, White, and Black backgrounds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I test every keyboard key and the touchpad before paying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open en.key-test.ru in the browser and tap every physical key (F1–F12, modifiers, Spacebar edges, Enter) to verify each key turns green."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why should you restart a second-hand laptop at least twice before paying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Restarting once cold and once after 15 minutes of load exposes thermal shutdowns, intermittent motherboard faults, and warm-boot memory crashes."
+          }
+        }
+      ]
     }
     </script>
   </head>
