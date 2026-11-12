@@ -1,6 +1,6 @@
 {
   "name": "LaptopCheck",
-  "description": "Mobile-first inspection guide, hardware test directory, and diagnostic checklist for buying second-hand and refurbished Windows laptops.",
+  "description": "Collection of tools, inspection guide, hardware test directory, and diagnostic checklist for buying/testing second-hand laptops.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
