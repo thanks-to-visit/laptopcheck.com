@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#090d16"/>
+  
+  <!-- Subtle Grid Texture -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" stroke-opacity="0.6"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Left Accent Glow -->
+  <circle cx="160" cy="315" r="280" fill="#059669" fill-opacity="0.12" />
+
+  <!-- Laptop Icon Group -->
+  <g transform="translate(100, 155)">
+    <!-- Outer Card Backing -->
+    <rect width="320" height="320" rx="48" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    
+    <!-- Laptop Screen -->
+    <rect x="50" y="60" width="220" height="145" rx="12" stroke="#e2e8f0" stroke-width="16" fill="#1e293b"/>
+    <rect x="68" y="78" width="184" height="109" rx="6" fill="#020617"/>
+    
+    <!-- Screen Display Checkmark -->
+    <circle cx="160" cy="132" r="32" fill="#059669"/>
+    <path d="M147 132L156 141L175 122" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Laptop Base -->
+    <path d="M20 220C20 211.163 27.1634 204 36 204H284C292.837 204 300 211.163 300 220V228C300 234.627 294.627 240 288 240H32C25.3726 240 20 234.627 20 228V220Z" fill="#334155"/>
+    <rect x="130" y="210" width="60" height="6" rx="3" fill="#64748b"/>
+  </g>
+
+  <!-- Title & Text Content -->
+  <g transform="translate(480, 190)">
+    <!-- Badge -->
+    <rect width="170" height="32" rx="6" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+    <text x="14" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#34d399" letter-spacing="0.5">FIELD INSPECTION</text>
+
+    <!-- Main Title -->
+    <text x="0" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="800" fill="#f8fafc" letter-spacing="-1">LaptopCheck</text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="500" fill="#94a3b8">
+      Used &amp; Refurbished PC Hardware Diagnostic Guide
+    </text>
+    
+    <!-- Feature Pills -->
+    <g transform="translate(0, 175)">
+      <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="400" fill="#64748b">
+        ✓ 1-Tap Diagnostic Commands  ·  ✓ Battery &amp; SSD Health  ·  ✓ BIOS Lock Checks
+      </text>
+    </g>
+
+    <!-- Website URL -->
+    <text x="0" y="225" font-family="ui-monospace, monospace" font-size="16" font-weight="600" fill="#10b981">
+      https://laptopcheck.ai.studio
+    </text>
+  </g>
+</svg>

@@ -36,24 +36,23 @@ export const Footer: React.FC = () => {
             </Link>
             <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
             <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
+              href="https://github.com/Gitanuj993/laptopcheck.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-slate-900 dark:hover:text-slate-200 transition-colors underline-offset-4 hover:underline"
-              title="GitHub repository placeholder"
+              title="GitHub Repository"
             >
-              GitHub (Placeholder)
+              GitHub
             </a>
           </div>
 
-          <p className="text-slate-400 dark:text-slate-500">
-            Local browser storage only · No telemetry or tracking
-          </p>
+         
         </div>
 
         {/* Verbatim Disclaimer */}
         <div className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-4">
           <p>
-            LaptopCheck provides educational inspection guidance. It does not guarantee hardware condition or replace professional hardware diagnostics. Buyers should verify device ownership and inspect hardware before payment.
+            LaptopCheck provides educational inspection guidance. 
           </p>
         </div>
       </div>
