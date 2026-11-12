@@ -29,7 +29,13 @@ const AppContent: React.FC = () => {
       case '/report':
         return <ReportPage />;
       case '/about':
+      case '/faq':
+      case '/terms':
+      case '/privacy':
+      case '/contact':
         return <AboutPage />;
+      case '/blogs':
+        return <HomePage />;
       default:
         // Default landing page is Tools
         return <ToolsPage />;

@@ -105,26 +105,28 @@ export function useRouter() {
 }
 
 export const Link: React.FC<{
-  href: string;
+  href?: string;
+  to?: string;
   className?: string;
   children: React.ReactNode;
   title?: string;
   ariaLabel?: string;
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-}> = ({ href, className, children, title, ariaLabel, onClick }) => {
+}> = ({ href, to, className, children, title, ariaLabel, onClick }) => {
   const { navigate } = useRouter();
+  const target = to || href || '#';
 
   return (
     <a
-      href={href}
+      href={target}
       title={title}
       aria-label={ariaLabel}
       className={className}
       onClick={(e) => {
         onClick?.(e);
-        if (!href.startsWith('http') && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
+        if (!target.startsWith('http') && !e.ctrlKey && !e.metaKey && !e.shiftKey) {
           e.preventDefault();
-          navigate(href);
+          navigate(target);
         }
       }}
     >
