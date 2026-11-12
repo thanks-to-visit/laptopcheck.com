@@ -12,7 +12,7 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/Gitanuj993/laptopcheck.com', icon: Github },
+  { label: 'GitHub', href: 'https://github.com/thanks-to-visit/laptopcheck.com', icon: Github },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/gitanuj993', icon: Linkedin },
   { label: 'Email', href: 'mailto:anujtawar42@gmail.com', icon: Mail },
   { label: 'Instagram', href: 'https://www.instagram.com/_limitless_anuj_v4.0.1/', icon: Instagram },
