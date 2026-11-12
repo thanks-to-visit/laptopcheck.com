@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>/checklist</loc>
+    <loc>https://laptopcheck.ai.studio/checklist</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>/tools</loc>
+    <loc>https://laptopcheck.ai.studio/tools</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>/directory</loc>
+    <loc>https://laptopcheck.ai.studio/directory</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>/report</loc>
+    <loc>https://laptopcheck.ai.studio/report</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>/about</loc>
+    <loc>https://laptopcheck.ai.studio/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url><loc>/guides/processor</loc><priority>0.8</priority></url>
-  <url><loc>/guides/ram</loc><priority>0.8</priority></url>
-  <url><loc>/guides/storage</loc><priority>0.8</priority></url>
-  <url><loc>/guides/battery</loc><priority>0.8</priority></url>
-  <url><loc>/guides/display</loc><priority>0.8</priority></url>
-  <url><loc>/guides/keyboard-touchpad</loc><priority>0.8</priority></url>
-  <url><loc>/guides/connectivity</loc><priority>0.8</priority></url>
-  <url><loc>/guides/bios-security</loc><priority>0.9</priority></url>
-  <url><loc>/guides/physical-condition</loc><priority>0.8</priority></url>
-  <url><loc>/guides/buying-guide</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/processor</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/ram</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/storage</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/battery</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/display</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/keyboard-touchpad</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/connectivity</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/bios-security</loc><priority>0.9</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/physical-condition</loc><priority>0.8</priority></url>
+  <url><loc>https://laptopcheck.ai.studio/guides/buying-guide</loc><priority>0.8</priority></url>
 </urlset>
